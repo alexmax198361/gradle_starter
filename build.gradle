@@ -1,0 +1,17 @@
+apply from: "script.gradle"
+apply plugin: CustomPlugin
+class CustomPlugin implements Plugin<Project> {
+
+    @Override
+    void apply(Project project) {
+        def map = [description: "hello description", group: "sazanovich", type: DefaultTask]
+        project.task(map, "hello") {
+            doLast {
+                println "execution action 2"
+            }
+            doFirst {
+                println "execution action 1"
+            }
+        }
+    }
+}
